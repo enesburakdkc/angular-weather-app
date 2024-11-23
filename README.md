@@ -6,7 +6,7 @@
 
 <p>To use this app, create a new Ionic/Angular project and replace the generated src folder with the contents of this src folder.</p>
 
-<p>This site is live at <a href="http://5.83.150.211:8100/">http://5.83.150.211:8100/</a></p>
+<p>This project is live at <a href="http://5.83.150.211:8100/">http://5.83.150.211:8100/</a></p>
 
 <h2>Screenshots</h2>
 
