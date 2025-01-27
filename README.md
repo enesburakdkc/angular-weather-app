@@ -1,6 +1,6 @@
-<h1>Weather App with Angular and Ionic Framework</h1>
+<h1>Weather App project coded with Angular using Ionic Framework</h1>
 
-<p>This project is a Weather App built with Angular using the Ionic framework for a seamless, cross-platform experience.</p>
+<p>A Weather App project coded with Angular using the Ionic framework for a seamless, cross-platform experience.</p>
 
 <p>The app uses an API to automatically fetch weather data based on the device’s current location.</p>
 
