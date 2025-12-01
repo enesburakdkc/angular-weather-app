@@ -1,20 +1,117 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Weather App
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+    <ion-grid>
+      <ion-row class="weatherLocation">
+        <ion-col>
+          <h1>{{ name }} <span> / {{ sys_country }}</span></h1>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-grid>
+      <ion-row class="weatherSummary">
+        <ion-col>
+          <img src="http://openweathermap.org/img/wn/{{ weather_icon }}@2x.png">
+        </ion-col>
+      </ion-row>
+      <ion-row class="weatherSummaryText">
+        <ion-col>
+          <b>{{ main_temp }}&deg;</b>
+        </ion-col>
+      </ion-row>
+      <ion-row class="weatherSummaryText2">
+        <ion-col>
+          <div>
+            <span>Feels like {{ main_feels_like }}&deg;</span>
+            <span><ion-icon name="water-outline"></ion-icon>{{ main_humidity }}% humidity</span>
+          </div>
+          <div>
+            <span>min {{ main_temp_min }}&deg;/ max {{ main_temp_max }}&deg;</span>
+            <span><ion-icon name="swap-vertical-outline"></ion-icon> {{ wind_speed }} km/h</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <ion-grid>
+      <ion-row class="weatherNextHours">
+        <ion-col>
+          <p>{{ fetchNextTimesData.list[0].dt_txt | saat }}</p>
+          <img src="http://openweathermap.org/img/wn/{{ fetchNextTimesData.list[0].weather[0].icon }}@2x.png">
+          <p>{{ fetchNextTimesData.list[0].main.temp }}&deg;</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ fetchNextTimesData.list[1].dt_txt | saat }}</p>
+          <img src="http://openweathermap.org/img/wn/{{ fetchNextTimesData.list[1].weather[0].icon }}@2x.png">
+          <p>{{ fetchNextTimesData.list[1].main.temp }}&deg;</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ fetchNextTimesData.list[2].dt_txt | saat }}</p>
+          <img src="http://openweathermap.org/img/wn/{{ fetchNextTimesData.list[2].weather[0].icon }}@2x.png">
+          <p>{{ fetchNextTimesData.list[2].main.temp }}&deg;</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ fetchNextTimesData.list[3].dt_txt | saat }}</p>
+          <img src="http://openweathermap.org/img/wn/{{ fetchNextTimesData.list[3].weather[0].icon }}@2x.png">
+          <p>{{ fetchNextTimesData.list[3].main.temp }}&deg;</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ fetchNextTimesData.list[4].dt_txt | saat }}</p>
+          <img src="http://openweathermap.org/img/wn/{{ fetchNextTimesData.list[4].weather[0].icon }}@2x.png">
+          <p>{{ fetchNextTimesData.list[4].main.temp }}&deg;</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ fetchNextTimesData.list[5].dt_txt | saat }}</p>
+          <img src="http://openweathermap.org/img/wn/{{ fetchNextTimesData.list[5].weather[0].icon }}@2x.png">
+          <p>{{ fetchNextTimesData.list[5].main.temp }}&deg;</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ fetchNextTimesData.list[6].dt_txt | saat }}</p>
+          <img src="http://openweathermap.org/img/wn/{{ fetchNextTimesData.list[6].weather[0].icon }}@2x.png">
+          <p>{{ fetchNextTimesData.list[6].main.temp }}&deg;</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ fetchNextTimesData.list[7].dt_txt | saat }}</p>
+          <img src="http://openweathermap.org/img/wn/{{ fetchNextTimesData.list[7].weather[0].icon }}@2x.png">
+          <p>{{ fetchNextTimesData.list[7].main.temp }}&deg;</p>
+        </ion-col>
+        <ion-col>
+          <p>{{ fetchNextTimesData.list[8].dt_txt | saat }}</p>
+          <img src="http://openweathermap.org/img/wn/{{ fetchNextTimesData.list[8].weather[0].icon }}@2x.png">
+          <p>{{ fetchNextTimesData.list[8].main.temp }}&deg;</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+      <ion-row class="weatherSunMoon">
+        <ion-col>
+          <p>Sunrise</p>
+          <img src="https://openweathermap.org/img/wn/01d@2x.png">
+          <p>{{ convertUnixTimeToDateTime(sys_sunrise) | saat }}</p>
+        </ion-col>
+        <ion-col>
+          <p>Sunset</p>
+          <img src="https://openweathermap.org/img/wn/01n@2x.png">
+          <p>{{ convertUnixTimeToDateTime(sys_sunset) | saat }}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
   </div>
+
+  <!-- Refresh Page -->
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
 </ion-content>

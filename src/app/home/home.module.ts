@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
-
 import { HomePageRoutingModule } from './home-routing.module';
-
+import { SaatPipe } from "../pipes/saat.pipe";
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    SaatPipe
   ],
+  providers: [provideHttpClient()],
   declarations: [HomePage]
 })
 export class HomePageModule {}
